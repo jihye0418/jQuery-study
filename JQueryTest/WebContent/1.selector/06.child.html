@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제(부모-자식관계(중첩관계))</title>
+<script>
+	$(function(){ //중첩은 트리구조로 되어 있다. 
+		/*
+		형식1) 부모태그 > 자식태그   
+		-> 부모태그 바로 밑에 있는 자식태그만 선택 (자손태그 선택x)
+		*/
+		$('p > span').css('border','3px solid navy');
+		
+		/*
+		형식2) 부모태그 자식태그
+		-> 부모태그 바로 밑에 있는 자식태그 선택 (자손 태그 포함o)
+		*/
+		$('body div').css('border','3px dotted red');
+		
+		/*
+		형식3) 부모태그 + 자식태그
+		-> 바로 옆의 태그를 찾을 때 사용
+		*/
+		$('span + a').css('border','3px double green');
+		
+		/* prev() -> 선택된 태그의 이전 요소 */
+		$('span + a').prev().css('border','3px double green');
+		
+		/* next() -> 선택된 태그의 다음 요소 */
+		$('span + a').next().css('border','3px double green');
+		
+		/* first()  -> 같은 태그들 중에서 첫번째 요소 */
+		$('span').first().css('border','3px solid red');
+		
+		/* .last() -> 같은 태그들 중에서 마지막 요소 */
+		$('span').last().css('border','3px solid red');
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+	<div>
+		<ul> 과일 목록
+			<li>사과</li>
+			<li>배</li>
+			<li>복숭아</li>
+			<li>오렌지</li>
+			<li>파인애플</li>
+		</ul>
+		<div>가을</div>
+		<div>jQuery 연습</div>
+		<p>
+			<span>태그정보</span>
+			<a>one</a>
+			<span>태그정보2</span>
+		</p>
+	</div>
+</body>
+</html>

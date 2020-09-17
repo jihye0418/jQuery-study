@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		/*
+			1. setTimeout(호출할함수명 | 익명함수, 초 단위(1000))  -> 한 번만 실행
+			2. setInterval(호출할함수명 | 익명함수, 초 단위(1000))  -> 계속 반복해서 실행
+		*/
+		setTimeout(function(){
+			var value=$('select > option:selected').val()  //매개변수가 없으므로 값을 가지고 옴(getter)
+			alert(value);
+		},5000) //5초 뒤에
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+	<select>
+		<option>화면구현</option>
+		<option>오라클</option>
+		<option>자바</option>
+		<option>JSP</option>
+		<option>jQuery</option>
+	</select>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
+<title>01.ready() 함수</title>
+<script>
+/* (1)
+	function test(){
+		alert("jQuery 소개"); //팝업창을 실행(맨 나중에 실행된다-> 문서가 다 로딩된 다음 실행)  -> 실행 속도가 느리다.
+	} 
+*/
+/*(2)불러오는 문서의 내용이 복잡(화면디자인이 복잡하면)-> 속도가 느려지는 단점이 발생한다. 
+	//window.on이벤트종류명 = 호출할 함수명  or 익명함수
+	window.onload=function(){
+	alert("jQuery소개2");
+}
+*/
+//(3) 속도가 빠른 jQuery ready()함수 이용
+	//형식) $(document).ready(실행할 함수명 or 익명함수(처리문장))
+	$(document).ready(function(){
+		//문서를 읽어들여서 맨 처음 실행할 구문이 있다면 실행구문을 작성하는 영역
+		alert("ready()를 이용해서 함수를 호출합니다.");
+	});
+	
+	$().ready(function(){
+		alert("함수 호출합니다잉");
+	});
+	
+	$(function(){
+		alert("함수 호출3"); //실무에서 가장 많이 사용하는 패턴
+	});
+</script>
+</head>
+<!-- 문서를 읽어들일 때 발생하는 이벤트  -->
+<!-- <body onload="test()"> (1)-->
+<body>
+</body>
+</html>

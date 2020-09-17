@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제 (each의 두번째 예제)</title>
+<script>
+	$(function(){
+		//중첩된 태그의 정보를 어떻게 얻어오고 내용을 검색해서 스타일을 적용시킬 수 있을까??
+		var $nodes = $('#root').children().css('color','red'); /* $nodes -> nodes변수의 객체  / children() -> 자식태그 전체 */
+		//alert('자식들의 수=>' + $nodes.length);  //결과값 : 4
+		
+		// 자식 태그의 값을 알고 싶다면
+		var txt=""; //자식들의 이름들을 저장할 변수
+		// 형식) $(반복적으로 실행시킬 태그명).each(호출할 함수명/익명함수명)
+		$('#root').children().each(function(){
+			//txt += $(this).text()+" " //홍길동 테스트김 임시 임시테스트 
+			txt += $(this).html()+" " //<b>홍길동</b> 테스트김 <i>임시</i> 임시테스트 
+		});
+		alert(txt);
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제 (중첩)</h1>
+	<div id = "root"> <!-- 부모태그 -->
+		<!-- 자식태그 -->
+		<div><b>홍길동</b></div>
+		<div>테스트김</div>
+		<div><i>임시</i></div>
+		<div>임시테스트</div>
+	</div>
+</body>
+</html>

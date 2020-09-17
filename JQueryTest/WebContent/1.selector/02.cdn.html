@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js">
+</script>
+<title>02.cdn.html</title>
+<style type="text/css">
+/*
+	h1{color: red;}
+	span{border: 3px solid blue;}
+	.my{border:5px dotted green;}
+*/
+</style>
+<script>
+$(function(){
+	//alert("cdn방법을 이용해서 jquery 함수를 호출함");
+	//jQuery css 형식) $(element(태그이름), id선택자(#), 클래스 선택자(.)).함수명().함수명2()...
+	//$(선택자).css('속성명','속성값')
+	$('h1').css('color','red');
+	$('span').css('border','3px solid blue');  //자바에서의 Setter메서드
+	
+	//형식2) 클래스선택자는 --> $('태그명.클래스명').css('속성명','속성값')
+	$('span.my').css('border','5px dotted green');
+	$('.my').css('border','5px dotted green');
+	
+	//형식3) 아이디 선택자는 --> $('태그명#id선택자명').css('속성명','속성값')   ==> 태그명 생략 가능
+	$('#content').css('background','yellow'); 
+	//div 태그 중 id가 content인 태그를 찾아서 배경색을 노란색으로 바꿔라
+	
+	//형식4)모든 태그를 가리키는 예약어 -> *
+	$('*').css('color','cyan'); //동일한 스타일을 여러번 적용시키면 맨 마지막에 작성한 것만 반영됨
+	
+	
+});
+</script>
+</head>
+
+<body>
+	<h1>jQuery 선택자 연습</h1>
+	<p class="my">jQuery 실습</p>
+	<div>
+		<div id="content">id값이 content인 div</div>
+	</div>
+	<span>span1</span>
+	<span class="my">span2</span>
+</body>
+</html>
