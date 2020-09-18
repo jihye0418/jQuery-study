@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		var object1={} //내용이 없는 객체 var object1 = new Object()
+		//var object=[] //배열객체
+		
+		//자바스크립트는 동적 속성(=멤버변수)을 추가시킬 수 있다. ==> 객체명.속성 = 값
+		object1.name='임시';
+		object1.addr='서울시 강남구';
+		object1.age=20;
+		alert(object1.name+'님의 주소는'+object1.addr+'입니다. 나이는'+object1.age+'입니다');
+		
+		
+		//$.extend(기존의 객체명,객체명,객체명2...) => 객체배열의 관리
+		var object2={name:'테스트'}; //처음에 데이터가 존재
+		$.extend(object2,{
+			region:'서울시 강북구',
+			age:30,
+			sung:'여자'
+		});
+		
+		//출력=> 자바였다면 확장for문 => jQuery는 $.each
+		//형식) $.each(1.출력할 객체명, 2.매개변수로 index,value를 갖는 콜백함수)
+		var output='';
+		$.each(object2,function(key,item){
+			output += key+':'+item+'\n'
+		})
+		alert(output);
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+</body>
+</html>

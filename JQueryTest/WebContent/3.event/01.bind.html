@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		$('img').css('width',250)
+		
+		//자바스크립트에서 이벤트는
+		//형식)window.on이벤트종류명=호출할함수명 | 익명함수
+		//형식2)window.addEventListener(이벤트종류명,실행할함수명)
+		
+		//jQuery에서는
+		//형식3)$(이벤트발생대상자 선택자).bind(등록할 이벤트종류명,처리할함수명 | 익명함수명)
+		
+			//a태그의 기본적인 기능 : 이동, 전송(submit)  == > 모두 페이지 이동이 있다.
+			//태그들의 기본적인 기능을 막아주는 방법
+			//① return false
+			//② event 객체를 매개변수로 받아서 event.preventDefault() 호출   ------->$('a').bind('click',function(event){
+				//여기서 event는 마우스의 클릭상태, 좌표값(x,y) => 눈에 보이지 않는 객체. ---> 매개변수로 전달 받으면 된다.
+			
+		$('a').bind('click',function(){ //a태그를 클릭하면 익명함수가 실행된다.
+			//어떤 것을 눌렀는지 태그가 같아서 알 수 없다. 그래서 구분할 때는 $(this)로 작성한다.
+			//즉, $(this)는 같은 태그를 구분하는 키워드가 된다.
+			
+			/*
+			var href=$(this).attr('href')
+			$('img').attr('src',href);
+				//return false;
+			event.preventDefault();
+			*/
+			$('img').attr('src',$(this).attr('href'))
+			return false
+			
+		})
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 이벤트 예제</h1>
+<ul>
+	<li><a href="../picCats/Persian.jpg">Persian</a></li>
+	<li><a href="../picCats/RussianBlue.jpg">RussianBlue</a></li>
+	<li><a href="../picCats/BritishShorthairs.jpg">BritishShorthairs</a></li>
+</ul>
+
+<!-- <img src="../picCats/Persian.jpg" width="250"> 정적. -->
+<img>
+</body>
+</html>

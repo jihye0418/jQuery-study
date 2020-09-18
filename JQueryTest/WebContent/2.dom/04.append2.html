@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		/*
+                함수                                            설명
+   $(A) -> 부모 $(B) -> 자식
+   
+   $(A).append(B)->B를 A의 기존자식의 뒤에 추가할때 사용
+   $(A).prepend(B)->B를 A의 기존자식의 앞에 추가할때 사용
+   
+   $(A).after(B)->B를 A뒤에 추가할때 사용
+   $(A).before(B)->B를 A앞에 추가할때 사용
+ 		*/
+ 		
+ 		//$('div').append('<h1>jQueryTest2</h1>');
+		//$('div').prepend('<h1>jQueryTest3</h1>');
+ 		
+ 		//$('div').after('<h1>DOMTest4</h1>');
+		//$('div > h1').css('color','red').before('<h1>DOMTest5</h1>');
+		
+		//위치 주의!
+		//$('<h1>DOMTest</h1>').css('color','red').insertBefore('div');
+		
+		//이미지 크기 width=300 앞에 <h1>DOMTest 6</h1> 쓰기
+		$('img').attr('width',300).before('<h1>DOMTest 6</h1>');
+	});
+</script>
+</head>
+<body>
+	<div>
+		<h1>안녕하세요?</h1>
+	</div>
+	<h1>반갑습니다.</h1>
+	<img src="../picCats/Persian.jpg">
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<style>
+	.textstyle{
+		font-size: 16px;
+		line-height: 20px;
+		margin: 10px;
+	}
+</style>
+<script>
+	$(function(){
+		/*
+		   형식) 1.$(부모태그 > 자식태그)->부모태그 바로밑의 자식태그를 찾을때 사용(자손 포함 X)
+		         2.$(부모태그  자식태그)->부모태그 바로밑의 자식태그를 찾을때 사용(자손 포함 O)
+		         3.$(부모태그+자식태그)->부모태그 바로 옆에 인접한 형제태그(짝궁)찾기
+		         4.$(부모태그~자식태그)->부모태그 바로 옆에 짝궁+다른 인접한 태그까지 찾기
+		         
+		         $(선택자).append(자식태그)
+		  */
+		
+		
+		$('*').addClass('textstyle');
+		//$('em+a').css('background-color','yellow');
+		$('em+a').css('background-color','yellow').each(function(){ //em에 인접한 모든 a태그
+			$('.result1').append($(this)); //$(this)  => 찾은 a태그를 의미
+		})
+		alert('검색된 엘리번트의 수:' + $('em+a').length); //결과 : 1
+	});
+</script>
+</head>
+<body>
+<em>one</em>
+<a>two</a>
+<a>three</a>
+<b>four</b>
+<a>five</a>
+<em>six</em>
+<hr>
+<div>
+	<span>검색된 엘리먼트(요소) 확인 예제</span>
+	<span class="result1"></span>
+</div>
+</body>
+</html>

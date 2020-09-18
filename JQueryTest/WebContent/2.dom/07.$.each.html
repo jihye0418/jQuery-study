@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>배열관리(포털사이트의 주소관리),객체관리</title>
+<script>
+	$(function(){ //익명객체
+		var array=[{name:'naver',link:'http://www.naver.com'},
+			             {name:'daum',link:'http://www.daum.net'},
+			             {name:'nate',link:'http://www.nate.com'},
+			             {name:'google',link:'http://www.google.com'}]
+		
+		//형식) $.each(1.컬렉션또는배열, 2.처리해줄콜백함수(key,value))
+		$.each(array,function(key,value){
+			var output='';
+			output += '<a href=" '+value.link+' ">';
+			output +='<h1>'+value.name+'</h1>';
+			output +='</a>';
+			
+			//body에 인덱스 번호에 해당하는 항목(=객체)를 추가
+			document.body.innerHTML += output;
+		})
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

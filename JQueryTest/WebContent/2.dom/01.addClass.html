@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제(each함수와 연관)</title>
+<style>
+	.high_light_0{
+		background:yellow; 
+		font-size:30px;
+		color:red;
+	}
+	
+	.high_light_1{background:orange}
+	.high_light_2{background:blue}
+	.high_light_3{background:green}
+	.high_light_4{background:red}
+</style>
+<script>
+	$(function(){
+		$('h1:eq(0)').attr('class','high_light_0');
+		//h1인덱스 0번에 속성추가(attr : 속성 추가) => 5번 반복해야 함..
+		
+		/*
+		<jQuery에서 스타일 적용하는 방법>
+			1.css() => 속성명-> 속성값을 지정(하나씩 부여) / css({키명:속성값...})
+			2.addClass(적용시킬클래스명) -> 한꺼번에 여러개의 스타일을 동시에 설정하고 싶을 때 사용.
+				<--->removeClass(해제시킬클래스명)
+				toggleClass(반복적으로실행시킬클래스명) : addClass와 removeClass를 한번씩 번갈아가며 반복시킴
+		*/
+		$('h1').addClass('high_light_0');
+		$('h1').addClass(function(index){ //각 태그를 구분하는 인덱스 번호
+			//addClass안에 콜백함수가 있음
+			//alert(index);
+		
+		//브라우저에서 인덱스 번호를 불러와서 리턴해준다.
+		return 'high_light_' + index;
+		}); //① 콜백함수 실행 -> ②high-light_0 반환 -> $('h1').addClass('high_light_0') 스타일 적용
+	});
+</script>
+</head>
+<body>
+<!-- 같은 태그인데 서로 구분해서 각각 다른 스타일을 적용하는 방법?
+		1. each함수 사용
+		2. 콜백함수 사용
+		
+		
+		* 속성명이 없을 때는 태그 순서로 구분한다.
+		
+		attr : 속성 추가
+ -->
+<h2>jQuery 예제</h2>
+<h1>Item-0</h1>
+<!-- <h1 class="high_light_0">Item-0</h1>  : 정적 방법-->
+<h1>Item-1</h1>
+<h1>Item-2</h1>
+<h1>Item-3</h1>
+<h1>Item-4</h1>
+</body>
+</html>

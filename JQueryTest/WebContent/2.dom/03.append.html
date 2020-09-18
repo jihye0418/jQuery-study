@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		/*
+                함수                                            설명
+   $(A) -> 자식 $(B) -> 부모
+   
+   $(A).appendTo(B)->A를 B의 기존자식의 뒤에 추가할때 사용 (= 특정 태그 바로 뒤에)
+   $(A).prependTo(B)->A를 B의 기존자식의 앞에 추가할때 사용 (= 특정 태그 바로 앞에)
+   
+   $(A).insertAfter(B)->A를 B뒤에 추가할때 사용 (= 특정 태그 그룹 뒤에) / 부모 태그 뒤
+   $(A).insertBefore(B)->A를 B앞에 추가할때 사용 (= 특정 태그 그룹 앞에) / 부모 태그 앞
+ 		*/
+ 		
+ 		// $('<h1>jQueryTest</h1>').appendTo('div'); // 자식.appendTo(부모)
+		//$('<h1>jQueryTest</h1>').prependTo('div');
+ 		
+ 		//$('<h1>DOMTest</h1>').insertAfter('div');
+		//$('<h1>DOMTest</h1>').insertBefore('div');
+		
+		//위치 주의!
+		$('<h1>DOMTest</h1>').css('color','red').insertBefore('div');
+		
+		//이미지 크기 width=300, <div>태그 앞으로 배치해라
+		$('img').attr('width',300).insertBefore('div');
+	});
+</script>
+</head>
+<body>
+	<div>
+		<h1>안녕하세요?</h1>
+	</div>
+	<h1>반갑습니다.</h1>
+	<img src="../picCats/Persian.jpg">
+</body>
+</html>
