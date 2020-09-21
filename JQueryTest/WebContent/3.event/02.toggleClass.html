@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<style>
+	p{
+		margin:4px;
+		font-size: 16px;
+		font-weight: bolder;
+		cursor: pointer;
+	}
+	.blue{color: blue;}
+</style>
+<script>
+	$(function(){
+		//jQuery에서의 이벤트 처리방식①
+		//$('p').bind('click',function(){ //bind : 연결하다
+		
+		//jQuery에서의 이벤트 처리방식②
+		$('p').click(function(){
+			//형식 ) $(선택자).toggleClass(설정된 클래스 선택자)  => addClass() <->removeClass()
+			$(this).toggleClass('blue'); //body에 같은 p태그가 있으므로 선택된 것만 바뀌게 하기 위해 this를 사용함.
+			//같은 태그 구분 (이벤트를 발생시킨 태그) = > $(this)
+		});
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+<p class="blue">엘리먼트에 적용된 클래스들</p>
+<p>추가하고 제거하기를 반복연습합니다.</p>
+</body>
+</html>

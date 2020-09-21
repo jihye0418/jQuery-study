@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		//이벤트 객체 => 이벤트를 발생시킨 객체에 대한 정보를 가지고 있는 객체(event)
+		//ex) 마우스 클릭, 좌표값(x,y)
+		
+		// = $('img').bind('dblclick',function(){
+		// = $('img').on('dblclick',function(){
+		$('img').dblclick(function(event){ //event 객체 => 브라우저가 실행시켜준다. // function = 할일 
+			//alert('이미지 더블클릭');
+			//var $target = $(event.target)//$변수 = 객체    //event.target = 이미지를 의미함. (이벤트를 발생시킬 타겟)
+			//$(event.target) = $(this)  ==> var $target = $(this)
+			var $target = $(this)
+			alert($target.width()+","+$target.height()); //getter메서드 같음(저장된 값 그대로 가져옴)
+			
+			//더블클릭할 때마다 이미지가 2배씩 증가한다. 
+			$target.width($target.width()*2);
+			
+			
+			//이벤트 해제 형식1)$(이벤트발생대상자 선택자).unbind(해제시킬이벤트종류명)  ==> 해제시킬 이벤트만 연결 해제
+			//이벤트 해제 형식2)$(이벤트발생대상자 선택자).unbind()  ==> 모든 이벤트 연결 해제
+			$target.unbind(); // = $target.unbind('dblclick')  -> 설정해준 이벤트가 한 개 뿐이라 모두 해제 = 해제할 것만 해제 똑같음.
+			//= $target.off('dblclick')';
+			// 즉, 이벤트가 딱 한번만 실행된다. 
+			
+			//---------------------------------------------------------------
+			
+			//이벤트를 한번만 실행시키려면
+			$('img').one('dblclick',function(){
+				var $target = $(this);
+				alert($target.width()+","+$target.height());
+				$target.width($target.width()*2);
+		});
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+<img src="../picCats/Persian.jpg">
+</body>
+</html>

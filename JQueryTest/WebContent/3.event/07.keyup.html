@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		//사용자가 글자를 입력했을 때 발생하는 이벤트 (keyup)
+		
+		// = $('inpur').on('keyup',function(){
+		$('input').keyup(function(){	
+			var value = $(this).val() //입력한 글자를 value 변수에 넣음 
+			// getter계열   <-> ~val(입력한글자) : setter 계열
+			report(value); // =$('#console').text(value)
+		});
+		
+		//버튼을 눌렀을 때 input의 내용을 지우고 커서 입력
+		$('button').click(function(){ //버튼의 reset 기능
+			$('input').val(''); //input의 내용을 지워라
+			$('input').focus() //커서 입력
+			$('#console').empty(); //내용만 지워라
+		});
+		
+		//div 태그에 입력받은 값을 추가시켜주는 함수 작성
+		function report(msg){ //문자를 받아 출력
+			$('#console').text(msg); //입력받은 문자 출력(setter 계열 함수)  <->$('#console').text()   -> 입력받은 문자 가져옴(getter 계열 함수)
+		}
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제(Typing)</h1>
+<button>reset</button>
+<input type="text" value="val함수 연습중" size="80">
+<div id="console"></div>
+</body>
+</html>

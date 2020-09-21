@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>폼태그에 대한 정리</title>
+<style>
+	.focused{background-color : #bbb;}
+</style>
+<script>
+	$(function(){
+		$('h1').css({'color':'red', 'text-decoration':'underline'})
+		
+		//태그에 부모 태그 만들기 
+		//형식)$(자식선택자).wrap("부모태그 내용") //자식을 부모태그 안에 넣겠다~
+		$('#message').wrap("<h2>요소 안에 자료 넣기</h2>");
+	
+		//focus이벤트 : 커서가 들어가는 경우에 발생되는 이벤트
+		$('input').focus(function(){ //커서가 들어갔을 때 할 일   / = $('input').on('focus',function(){})
+			$(this).addClass('focused');
+		})
+		
+		//blur이벤트 : 현재 input에서 커서가 벗어났을 때 발생하는 이벤트 종류
+		//(포커스가 선택한 요소에서 다른 요소로 이동되었을 때 선택한 요소의 포커스가 강제로 사라지게 하는 것)
+		$('input').blur(function(){
+			$(this).removeClass('focused');
+		});
+		
+		//전송버튼의 기본적인 기능 : 데이터를 전송(action = "페이지")
+		$('#frm').submit(function(event){ //submit을 했을 때 할 일
+			var new_line =$('<li>' + $('#data').val() + '</li>'); //getter
+			$('#disp').append(new_line); //부모.append(자식)   <-> 자식.append to(부모)
+			$('#data').val('') //입력했던 것 지우기
+			$('#data').focus(); //커서 두기
+			event.preventDefault(); // = return false (값을 전송하지 마라)
+		}) 
+		
+		$('#clear').click(function(){ //= $('#clear').on('click',function(){})
+			$('#disp').empty();
+		});
+	});
+</script>
+</head>
+<body>
+<h1>jQuery의 이벤트 종류 정리예제</h1>
+<div id="message"></div>
+<form id="frm" action="aa.jsp">
+<input type="text" id="data">
+	<input type="submit" value="확인">
+</form>
+<p>
+<button id="clear">지우기</button>
+<ul id="disp">
+</ul>
+<p>
+<a href="http://www.naver.com">naver</a>
+</body>
+</html>

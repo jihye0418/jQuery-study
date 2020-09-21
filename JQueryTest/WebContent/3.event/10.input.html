@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>간단한 회원가입</title>
+<style>
+	#userid, #age, #pwd1, #pwd2{width: 200px;	}
+	.msg{
+		color: red;
+		padding-left: 2px;
+	}
+</style>
+<script src="input.js"></script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+<form id="signup" method="post">
+	<label for="userid">ID 입력:</label>
+	<input type="text" name="userid" id="userid">
+	<span class="msg" id="id_error">ID를 입력하세요.</span><br>
+	
+	<!-- 나이 -->
+	<label for="age">나이 입력:</label>
+	<input type="text" name="age" id="age">
+	<span class="msg" id="age_error">나이를 입력하세요.</span>
+	<span class="msg" id="age_error2">나이는 반드시 숫자로 입력하세요.</span><br>
+	
+	<!-- 비밀번호 -->
+	<label for="pwd1">비밀번호 입력:</label>
+	<input type="password" name="pwd1" id="pwd1">
+	<span class="msg" id="p_error1">비밀번호를 입력하세요.</span><br>
+	
+	<!-- 비밀번호 확인 -->
+	<label for="pwd2">비밀번호 확인:</label>
+	<input type="password" name="pwd2" id="pwd2">
+	<span class="msg" id="p_error2">비밀번호 불일치</span><br>
+	
+	<input type="button" id="btnSend" value="전송">
+</form>
+</body>
+</html>

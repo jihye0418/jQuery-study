@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		/*
+		jQuery이벤트 연결시키는 방법 2가지
+		1. bind함수를 이용하는 방법
+			-> 현재 발생시킬 이벤트뿐만 아니라 다른 이벤트 처리도 가능 (원시적인 방법 - 넓게 설정)
+		2. bind함수를 이용하지 않는 방법
+			-> 현재 발생시킬 이벤트만 처리가 된다. (근시적인 방법)  --> 이벤트별로 따로 작성해야 한다. 
+		*/
+		//이미지를 클릭했을 때 '할 일'   => 할 일 = function	
+		
+		$('img').bind({  //<->unbind() => 이벤트 연결 해제시켜주는 함수
+			//형식) 이벤트종류명:fucntion(){}... ==> 순서 상관 없음
+			mouseout:function(){
+				$('img').attr('src','../picCats/Persian.jpg');
+			},
+			mouseover:function(){
+				$('img').attr('src','../picCats/RussianBlue.jpg');
+			},
+			click:function(){
+				alert('bind함수를 이용한 연결테스트 입니다.');
+			}
+		})
+		
+		
+		/* bind 함수를 이용하지 않는 방법
+			$('img').mouseout(function(){})
+			$('img').mouseover(function(){})
+			$('img').click(function(){})
+		*/
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+<img src="../picCats/Persian.jpg" width="200" height="200">
+</body>
+</html>

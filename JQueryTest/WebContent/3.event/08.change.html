@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		$('#sel').change(function(event){ //event를 받아온 이유는 이벤트가 발생한 것을 구분하기 위해
+			//#sel의 값이 바뀔 때 할 일 (여러가지 값 중에서 선택된 것만 이벤트 발생)
+			var imgSrc = $(this).val(); //= $(event.target).val(); 현재 이벤트를 발생시킨 객체
+			//option의 value값을 가지고 와서 imgSrc에 저장
+			$('#img').attr('src',imgSrc);
+			//#img의 src 속성을 imgSrc로 바꾼다.
+		});
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+<form name="frm">
+	<table>
+		<tr>
+			<td>
+				<select id="sel">
+					<option value="../picCats/Persian.jpg">Persian</option>
+					<option value="../picCats/RussianBlue.jpg">RussianBlue</option>
+					<option value="../picCats/BritishShorthairs.jpg">BritishShorthairs</option>
+				</select>
+			</td>
+			<td><img id="img"></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

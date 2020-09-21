@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<style>
+	.reverse{
+		background: balck;
+		color: white;
+	}
+</style>
+<script>
+	$(function(){
+		/*
+			형식) $(선택자).hover(1. mouseover | function(){}, 2. mouseout | function(){})
+			mouseover, mouseout을 번갈아 가면서 호출해주는 함수 => hover
+		*/
+		
+		
+		//$(this)는 function() 안에서 사용한다. 
+		$('h1').hover(function(){ //mouseover
+			$(this).addClass('reverse');
+		},function(){ //mouseout
+			$(this).removeClass('reverse');
+		})
+	});
+	
+	// = toggleClass로도 나타낼 수 있다. 
+	
+	
+	//스타일을 적용시키는 함수들
+	// => hover, addClass, removeClass, toggleClass
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+<h1>header-0</h1>
+<h1>header-1</h1>
+<h1>header-2</h1>
+</body>
+</html>
