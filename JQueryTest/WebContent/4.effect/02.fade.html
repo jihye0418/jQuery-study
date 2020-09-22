@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<style>
+	p{
+		position: relative; /* body를 기준으로 */
+		width : 400px;
+		height: 90px;
+	}
+	div{
+		position: absolute; /* relative를 기준으로 위치가 잡힘 */
+		top: 0;
+		left: 0;
+		font-size: 36px;
+		text-align: center;
+		color: yellow;
+		background: red;
+		padding-top: 25px;
+		width: 400px;
+		height: 90px;
+		display: none;
+	}
+	
+	span{display: none;}
+</style>
+<script>
+	$(function(){
+		$('#fadeIn').click(function(){ 
+			//형식) $(선택자).fadeIn(애니메이션유지시간,유지 된 후 처리할 함수) => 서서히 화면이 보임
+			//유지시간 : 초 / 문자열(slow,fast)
+			$('div').fadeIn(3000,function(){ //3초동안 서서히 보여주고 할 일
+				$('span').fadeIn(100); //0.1초동안 서서히 보여주겠다.
+			}); 
+		});
+		
+		$('#fadeOut').click(function(){ //불투명도 감소 => 투명도가 높아진다. ==> 서서히 사라진다.
+			//형식) $(선택자).fadeOut(유지시간,처리할함수);
+			//유지시간 : 초 / 문자열(slow,fast)
+			$('div').fadeOut(3000,function(){ //3초동안 서서히 사라진다
+				$('span').fadeIn(100);
+			});
+		});
+		
+		$('#fadeToggle').click(function(){ //fadeToggle => fadeIn+fadeOut
+			//형식) $(선택자).fadeToggle(유지시간,처리할함수)
+			//유지시간 : 초 / 문자열(slow,fast)
+			$('div').fadeToggle(3000,function(){
+				$('span').fadeIn(100);
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<p>
+	불투명도를 점점 높여서 보이게 설정
+	speed를 fast, normal, slow 또는 0 이상의 숫자(밀리세컨드 단위)를 준다. 
+	애니메이션이 끝난 후에 사용자 정의 함수를 지정할 수 있다. 
+</p>
+<div><span>Success!</span></div>
+<button id="fadeIn">fadeIn</button>
+<button id="fadeOut">fadeOut</button>
+<button id="fadeToggle">fadeToggle</button>
+</body>
+</html>

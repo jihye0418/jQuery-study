@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		$('#saveButton').click(function(){ //버튼을 눌렀을 때 할 일
+			var value=$('#name').val(); //name의 값을 변수로 저장. 
+			alert(value);
+			//형식) $.post(1.url(요청문서),2.전달할 매개변수(생략가능){매개변수명:전달할값},3.콜백함수,4.요청문서종류(생략가능)) //post방식으로
+			$.post('aa.jsp',{name:value},function(args){ //aa.jsp로 전송하겠다. 
+				//args => aa.jsp의 <%=name%>님 jQuery Ajax 환영합니다.^^
+				//jsp에서 해당 문장을 args 매개변수에 담아 원하는 곳에 출력한다.
+				$('#resultDIV').html(args); //전달 받은 문자열이 태그를 포함하고 있다면 : html(매개변수)
+			});
+		});
+		
+		$('#clearButton').click(function(){
+			$('#resultDIV').empty();
+			$('#name').val('').focus();
+		});
+	});
+</script>
+</head>
+<body>
+<!-- form태그도, action 속성도 없다. -->
+이름:<input type="text" id="name")><br><p>
+<button id="saveButton">전송</button>
+<button id="clearButton">지우기</button>
+
+<!-- DB에서 받은 데이터를 출력할 곳 -->
+<div id="resultDIV"></div>
+</body>
+</html>

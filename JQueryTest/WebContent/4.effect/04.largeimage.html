@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<style>
+	.small img{border: none; margin: 10px; width: 60px; height: 60px;}
+</style>
+<script>
+	$(function(){
+		$('.small a').hover(function(){
+			var imgname=$(this).attr('href'); //마우스가 올라간 것의 속성 중 이미지 이름을 변수로 지정
+			//변화시킬 것을 변수로 지정한다.
+			
+			//alert(imgname); //확인
+			
+			//fadeTo(유지시간,투명도(0 | 1),애니메이션 효과 후 처리할 함수)
+			$('.large').fadeTo("slow",0,function(){ //서서히 보이지 않게 한다(0-> 보이지 않게). 그 다음 할 일
+				$('.large').attr('src',imgname) //= $('large').attr('src',$(this).attr('href')); //선택한 것의 이미지로 바꾼다. 
+			}).fadeTo("slow",1); //선택한 이미지는 서서히 보이게 한다. 
+		},function(){});
+	});
+</script>
+</head>
+<body>
+<div class="small">
+	<a href="../img/photo1.jpg"><img src="../img/photo1.jpg"></a>
+	<a href="../img/photo2.jpg"><img src="../img/photo2.jpg"></a>
+	<a href="../img/photo3.jpg"><img src="../img/photo3.jpg"></a>
+	<a href="../img/photo4.jpg"><img src="../img/photo4.jpg"></a>
+	<a href="../img/photo5.jpg"><img src="../img/photo5.jpg"></a>
+	<a href="../img/photo6.jpg"><img src="../img/photo6.jpg"></a>
+</div>
+<img src="../img/photo1.jpg" class="large">
+</body>
+</html>

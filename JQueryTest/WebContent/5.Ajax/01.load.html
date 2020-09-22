@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>Ajax함수 중에서 load()</title>
+<script>
+	$(function(){
+		$('#menu1').click(function(){ //#menu1을 클릭했을 때 할 일
+			//형식) $(선택자).load('경로포함 불러올 문서명')
+			$('#message1').load('menu2.html');
+			return false; //링크의 기본 기능 중지 (= $(event.preventDefault()) )
+		})
+		
+		$('#menu1-1').click(function(){ 
+			$('#message1').empty(); //내용만 지우기,  <-> 태그 자체 삭제 : remove()
+		})
+		
+		$('#menu2').click(function(){ 
+			//~.load(경로포함해서불러올문서명 불러올태그명)
+			$('#message2').load('menu2.html li'); //menu2.html의 li태그만 가져온다. 
+			return false;
+		})
+		
+		$('#menu2-1').click(function(){ 
+			$('#message2').empty(); 
+		})
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+	<div>
+		<a href="#" id="menu1">메뉴보기1</a>
+		<a href="#" id="menu1-1">메뉴보기1 삭제</a>
+		<span id="message1"></span>
+	</div>
+	
+	<div>
+		<a href="#" id="menu2">메뉴보기2</a>
+		<a href="#" id="menu2-1">메뉴보기2 삭제</a>
+		<span id="message2"></span>
+	</div>
+</body>
+</html>
