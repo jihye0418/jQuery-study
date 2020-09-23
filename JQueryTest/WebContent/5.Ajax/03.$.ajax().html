@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+	$(function(){
+		//$.ajax 함수와 $.post 함수의 차이점 
+			//=> 기능은 같다.(서버에 요청해서 콜백함수를 통해 결과를 받아서 출력한다. )
+			//$.post()는 자동으로 $.ajax()를 호출해서  서버에게 요청한다. (요청방식 : post방식)
+				// <-->$.get()
+		//형식) $.ajax(1.url(요청문서), 2. 매개변수(생략가능), 3. 콜백함수)
+		$.ajax({ //키 값 형식으로도 요청할 수 있다. 만약 키를 사용하기 싫으면 $.ajax('aa.jsp');
+		//키 : 값 형식은 키(url, data, success)를 다른 이름으로 변경 불가능하다.
+			url:'aa2.jsp',  //1. url(속성명) : 요청문서   
+			data:{name:'test',age:'20',addr:'서울시 강남구'}, //2. data:{매개변수:값}
+			//body에 값이 없으므로 직접 값을 넣었다.  // aa2.jsp?name='test'&age=23&addr='서울시~'
+			success:function(test){ //3. success(성공적으로 보내준 경우) function(매개변수명)
+				$('body').append(test)
+			}
+		})
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

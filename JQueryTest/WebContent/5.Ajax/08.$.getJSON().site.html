@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+<!--  (오픈API를 이용한 getJSON())
+"title": "Recent Uploads tagged raccoon",
+"link": "http:\/\/www.flickr.com\/photos\/tags\/raccoon\/",
+"description": "",
+"modified": "2019-03-17T19:43:03Z",
+"generator": "http:\/\/www.flickr.com",
+"items": [
+{
+	"title": "Lost \u2601\ufe0f",
+	"link": "http:\/\/www.flickr.com\/photos\/pure_embers\/32463827727\/",
+	"media": {"m":"http:\/\/farm8.staticflickr.com\/7847\/32463827727_92fe9aa458_m.jpg"},
+	"date_taken": "2019-03-15T02:42:29-08:00",
+	"description": " <p><a href=\"http:\/\/www.flickr.com\/people\/pure_embers\/\">pure_embers<\/a> posted a photo:<\/p> <p><a href=\"http:\/\/www.flickr.com\/photos\/pure_embers\/32463827727\/\" title=\"Lost \u2601\ufe0f\"><img src=\"http:\/\/farm8.staticflickr.com\/7847\/32463827727_92fe9aa458_m.jpg\" width=\"240\" height=\"235\" alt=\"Lost \u2601\ufe0f\" \/><\/a><\/p> <p>Vincent and Rackety got a little bit lost in the fog... they stopped to look around and work out the best way home but it was all whiteness &lt;3 <br \/> <br \/> ~<br \/> Circus bear by LindseyThomasMakes, raccoon by ZozoZolala<\/p>",
+	"published": "2019-03-17T19:43:03Z",
+	"author": "nobody@flickr.com (\"pure_embers\")",
+	"author_id": "63432462@N03",
+	"tags": "pure embers laura uk pureembers photography kitty teddy circus bear tricycle woods art lindsey thomas makes raccoon zozo zolala needlefelted fog lost"
+},
+,,,
+-->
+	$(function(){
+		$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?"
+				+"tags=raccoon&tagmode=any&format=json&jsoncallback=?", 
+					function(data){
+			//1. 컬렉션객체(배열)(items 항목만 가져올 것임), 2.function(인덱스번호,항목(item(익명객체)){분리작업})
+			$.each(data.items,function(i,item){//전체 데이터 중에서 items 배열 객체를 가져올 것임
+				$("<h1>"+item.title+"</h1>").appendTo("#images") //$(자식).appendTo(부모) -> 자식을 부모에게 붙여라
+				//<img src="경로포함불러올파일명">
+				$("<img>").attr("src",item.media.m).appendTo("#images") //$(자식).appendTo(부모)
+				if(i==4)
+					return false; //그만 불러와라
+			})
+		})
+	})
+</script>
+</head>
+<body>
+<div id="images">
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>JSON 표기법</title>
+<script>
+	//JSON 표기법 => 키명 : 저장할값(숫자,문자,논리적인값,객체,배열(객체묶음))
+	var myjson = { //키 : 값 으로 객체를 만듦
+		"name":"홍길동",  //키에 " "을 줄 수도 있다. (안써도 됨) / 단, 문자를 저장할 땐 " " 나 ' '를 써야함.
+		"sung":"남자",
+		"func":"function(){alert('test')}"  //함수를 선언할 때도 키가 필요하다.  //함수 정의 부분을 문자열 형태로 저장했다.
+		
+		/*
+			문자열 -> 자바스크립트로 변환시켜주는 함수 : eval()
+			ex) "var re"+"sult=123"=eval("var result=123")    => var result=123;
+			ex) var a=function(){alert('test')}  -> a()
+		*/
+	}
+	var myjson2={"number":123} //숫자일 때는 그냥 작성
+
+	var myjson3={"temp":true} //boolean 값도 " "없이 그냥 작성
+	
+	//배열구조
+	var myjson4={"temp":["aaa","bbb","ccc"]} //[] : 배열을 의미 (배열은 같은 자료형만 저장한다. 이 배열은 문자형 배열)
+	
+	var mem={name:'홍길동',fColor:['파랑','녹색','빨강']}
+	
+	//총 5개의 객체를 json 객체 형태로 만들었다. 
+	
+	
+	//저장한 값을 불러올 때 : 객체명.키명
+	//값 저장할 때 / 수정할 때 : 객체명.키명=저장할값
+	function print1(){ //함수 생성
+		var msg=mem.name+"님이 좋아하는 색깔은 " + mem.fColor.length+"개이고,"
+		      msg+="\n그 중에서 제일 좋아하는 색깔은 " + mem.fColor[0]+"입니다.";
+		alert(msg);
+	}
+</script>
+</head>
+<body>
+<h1>JSON 표기법에 해당되는 다양한 객체들</h1>
+<input type="button" value="test" onclick="print1()">
+<input type="button" value="이름변경" onclick="myjson.name='테스트';alert(myjson.name) ">
+<input type="button" value="함수호출" onclick="eval('a='+myjson.func);a()">
+																	<!-- a라는 변수에 myjson.func를 넣음 --> 
+</body>
+</html>

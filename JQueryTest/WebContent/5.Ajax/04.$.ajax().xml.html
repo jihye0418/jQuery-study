@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<!-- getXml.jsp 내용 중
+	<people>
+	 	<person>
+	 		<name>홍길동</name>
+	 		<job>학생</job>
+	 		<age>23</age>
+	 	</person>
+			...
+ -->
+ 
+<script>
+	$(function(){
+		$.ajax('getXml.jsp',{//키 : 값 형식이 아니다? -> url : 생략함 / 전달할 매개변수가 없다 -> data: 생략
+			success:function(data){ //xml 태그를 data 매개변수로 설정
+				//분리작업(= 파싱 분리) parse -> find() 함수를 쓰거나 filter()를 쓴다. 
+				$(data).find('person').each(function(){ //태그 중에 person 태그를 각각 찾아서 할 일
+					//<person> 태그를 찾는다. -> 여러 개가 있다(반복적으로 썼다) ==> each()를 사용
+					//each() -> for문이라 생각하면 됨
+						var name='<li>' + $(this).find('name').text() +'</li>' //person이 여러개기 때문에 몇번째 person인지 구분하기 어렵다. ==> $(this) 사용.
+						//.text() -> 내용만 가져올 것이기 때문에 text()
+						var job='<li>'+$(this).find('job').text()+'</li>'
+						var age='<li>'+$(this).find('age').text()+'</li>'
+						
+						//가져와서 <div id="output">에 출력해라
+						$('#output').append('<ul>'+name+job+age+'</ul>')
+				}) //----each
+			}//---success
+		})//---$.ajax
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제(xml문서 불러오기)</h1>
+<div id = "output">
+	<!-- xml에 저장한 내용을 이렇게 출력하고 싶다.
+	<ul>
+		<li>홍길동</li>
+		<li>학생</li>
+		<li>23</li>
+	</ul>
+	 -->
+</div>
+</body>
+</html>
