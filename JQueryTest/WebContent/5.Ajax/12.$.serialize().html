@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript"  
+           src="http://code.jquery.com/jquery-3.3.1.min.js" ></script>
+<title>jQuery예제</title>
+<!-- <script src="test.js"></script> -->
+<script>
+
+ $(function(){ 
+	//{seq:1,username='테스트',addr=''}
+	$('#submit').click(function(){
+		//전의 내용을 지고 새로운 내용을 추가하기위해서 전의 데이터 삭제
+		$('#result').empty()
+		//var form_data=$('form').serializeArray()//json형식으로 묶어준다.
+		//(1)입력받은값을 서버에 전송하기전에 확인절차
+		/*
+		$.each(form_data,function(index,test){//폼의 입력받은 순서->인덱스번호
+			$('#result').append(test.name+"="+test.value+"<br>")//항목=저장할값
+		})
+		
+		*/
+		var form_data=$('form').serialize()
+		/* (2) get방식처럼 url창 뒤에 전달할 매개변수를 붙여서 전송하는 방법
+		var form_data=$('form').serialize()
+		$('#result').text(form_data)
+		*/
+		//seq=1&username=%ED%85%8C%EC%8A%A4%ED%8A%B8&password=1234&hobby=music&hobby=yoga
+		//$('#result').html(msg)//html함수는 태그포함하는거와 상관없이 문자열을 저장
+		//return false;//전송X(필수입력인데 아직 입력하지 않은값이 있으면 전송되지 못하게 설정) 
+		//(3)서버에 요청
+		//1.요청문서 2.전달할 매개변수들  3.서버로부터 받았을때 처리해주는 익명함수
+		$.post('form.jsp',form_data,function(args){//콜백함수의 매개변수(서버로 전달받은값)
+			$('#result').html(args)
+		})
+	})
+ })
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+
+<form>
+<!-- hidden객체를 사용한 이유(입력하지 않고 전달하는 경우)
+ ex) 게시판의 게시물번호(seq)
+ -->
+<input type="hidden" name="seq" value="1">
+<label>이름을 입력하세요</label>
+<input type="text" name="username"><br>
+<label>암호를 입력하세요</label>
+<input type="password" name="password"><br>
+
+<input type="checkbox" name="hobby" value="music">music
+<input type="checkbox" name="hobby" value="yoga">yoga
+<input type="checkbox" name="hobby" value="reading">reading<br>
+
+<input type="button" id="submit" value="전송">
+</form>
+<hr>
+<div id="result"></div>
+</body>
+</html>

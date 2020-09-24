@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제</title>
+<script>
+
+/*test.js
+function call(param){
+	return("Hello,"+param)
+}
+ */
+	$(function(){
+		//일반적인 자바스크립트를 불러오는 방법
+			//1. <script src="경로포함 불러올 파일명.js">
+			//2. $.getScript('경로포함 불러올 js파일명')
+		
+		$.getScript("test.js"); //함수를 쓰기 전에 먼저 $.getScript()를 호출한다. => 메모리에 올려놓음
+		$('#submit').click(function(){
+			var msg = call($('.username').val()); //username에 입력한 값을 가져와서 test.js에 있는 function call에 매개변수로 줌
+			alert(msg);
+			$('#message'). html(msg);
+			//태그 사이에 넣으니까 -> text/html을 사용한다. 
+			//html은 태그가 있으면 태그까지, 태그가 없으면 텍스트만 넣어준다. 
+			return false; 
+			//submit은 기본 기능이 페이지를 이동하는 것인데 이것을 막기 위해 작성했다. (혹시나를 위해 작성)
+			//여기서는 불필요함. 
+			//필수 입력인데 아직 입력하지 않은 값이 있을 경우 페이지 이동을 하지 않기 위해 작성
+		});
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제</h1>
+<!-- 
+	form태그를 사용해서 전송하는 경우 -> action 속성 사용
+	form태그를 사용하지 않고 전송하는 경우 -> ajax 함수를 이용
+-->
+<h1>이름을 입력하세요</h1>
+<input type="text" name="username" class="username"><br>
+<input type="button" id="submit" value="전송">
+<div id="message"></div>
+
+</body>
+</html>

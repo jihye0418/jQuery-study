@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<title>jQuery예제(xml 속성값 불러오기)</title>
+<!-- xml에서 속성값이 있는 경우 어떻게 불러오는지 알아보는 예제.
+<items>
+	<item id="1" name="레몬">
+	    <price>3000</price>
+	     <description>피로회복에 좋고 비타민C 풍부
+	     </description>
+	</item>
+	
+	->id, name은 속성 / price, description은 태그
+,,,
+</items>
+ -->
+ 
+<script>
+	$(function(){
+		//$.post (post방식으로 서버에 요청할 때 사용되는 함수)  <-> $.get (get방식으로 서버에 요청)
+		$.get('item.xml',function(data){ //매개변수를 받음(data = item.xml의 모든 태그들)
+				//분리작업(= 파싱 분리) parse -> find() 함수를 쓰거나 filter()를 쓴다. 
+				$('#treeData').append('<tr><td>id</td>'+'<td>name</td>'
+						+'<td>price</td>'+'<td>description</td></tr>');
+				
+				//태그가 있는 데이터를 불러올 때는 ==> $(반복할 태그선택자).each
+				//태그가 아닌 데이터를 불러올 때는 ==> $.each()
+				$(data).find('item').each(function(){ //태그 중에 item 태그를 각각 찾아서 할 일
+					//같은 태그들을 구분할 때는 -> $(this)
+					//태그가 아닌 같은 객체는 -> this
+					
+					var $item = $(this); //jQuery에서 객체는 -> $객체명   ==> $(this)를 변수로 지정 = $변수 = 객체가 들어있는 변수
+					//=> $item = 현재 선택되어 불러올 객체
+					$('#treeData').append('<tr><td>'+$item.attr('id')+'</td><td>'
+							+$item.attr('name')+'</td><td>'
+						    +$item.find('price').text()+'</td><td>'
+						    +$item.find('description').text()+'</td></tr>');
+						
+			}); //----each
+		});//---$.get()
+	});
+</script>
+</head>
+<body>
+<h1>jQuery 예제(xml문서 불러오기)</h1>
+<table border="1" id="treeData">
+
+</table>
+</body>
+</html>
